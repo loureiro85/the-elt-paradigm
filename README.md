@@ -31,7 +31,6 @@ Additional sources were added, namely:
 - calendar.csv - containing date dimension fields
 
 ## 4. Data Visualization
-[Dashboard link](https://datastudio.google.com/reporting/ddbb24d6-bcff-4299-b852-837b10f0b067)
 Analyzes were created based on dimensions.
 The following analyzes were made:
 - Location

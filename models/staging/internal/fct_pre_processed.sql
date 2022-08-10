@@ -1,0 +1,1 @@
+select distinct * from {{ source('internal', 'data_challenge') }}

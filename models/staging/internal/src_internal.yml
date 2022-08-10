@@ -1,0 +1,80 @@
+version: 2
+
+sources:
+  - name: internal
+    database: company
+    schema: internal
+    tables:
+      - name: data_challenge
+
+models:
+  - name: dim_carrier
+    description: Carrier dimension.
+    columns:
+      - name: carrier_id
+        description: Primary key for carrier.
+        tests:
+          - unique
+          - not_null
+      - name: carrier_name
+        description: Carrier name.
+  - name: dim_shipper
+    description: Shipper dimension.
+    columns:
+      - name: shipper_id
+        description: Primary key for shipper.
+        tests:
+          - unique
+          - not_null
+      - name: shipper_name
+        description: Shipper name.
+  - name: dim_lane
+    description: Lane dimension. Lane represents the union of pickup location with delivery location.
+    columns:
+      - name: lane_id
+        description: Primary key for lane.
+        tests:
+          - unique
+          - not_null
+      - name: lane_from
+        description: Pickup location in `city,state_code` format.
+      - name: lane_to
+        description: Delivery location in `city,state_code` format.
+  - name: dim_location
+    description: Location dimension.
+    columns:
+      - name: location_id
+        description: Primary key for location.
+        tests:
+          - unique
+          - not_null
+      - name: latitude
+        description: Location latitude.
+      - name: longitude
+        description: Location longitude.
+      - name: city
+        description: Location city.
+      - name: state_code
+        description: Location state code in two upperletter case.
+
+
+  - name: stg_distinct_location
+    description: Distinct location extracted from lane. Single column staging view.
+    columns:
+      - name: location_id
+        description: Primary key for location.
+        tests:
+          - unique
+          - not_null
+
+
+  - name: dim_REPLACEME
+    description: REPLACEME dimension.
+    columns:
+      - name: REPLACEME_id
+        description: Primary key for REPLACEME.
+        tests:
+          - unique
+          - not_null
+      - name: REPLACEME_name
+        description: REPLACEME name.

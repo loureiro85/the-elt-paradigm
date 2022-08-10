@@ -1,0 +1,37 @@
+version: 2
+
+sources:
+  - name: external
+    database: company
+    schema: external
+    tables:
+      - name: us_cities
+      - name: calendar
+
+models:
+  - name: dim_us_cities
+    description: US cities from https://raw.githubusercontent.com/kelvins/US-Cities-Database/main/csv/us_cities.csv.
+    columns:
+      - name: city_state
+        description: Union of city and state to be used as foreign key.
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_calendar
+    description: Calendar dimension table.
+    columns:
+      - name: date_id
+        description: Date in integer format.
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_state
+    description: State dimension table.
+    columns:
+      - name: state_id
+        description: State code with two characters.
+        tests:
+          - unique
+          - not_null
